@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:whatapps/Custom/CustomCard.dart';
 import 'package:whatapps/Model/ChatModel.dart';
+import 'package:whatapps/screens/SelectContact.dart';
 
 class Chatpage extends StatelessWidget {
-   Chatpage({Key? key}) : super(key: key);
+  Chatpage({Key? key}) : super(key: key);
 
   final List<ChatModel> chatList = [
     ChatModel(
@@ -21,20 +22,26 @@ class Chatpage extends StatelessWidget {
       isGroup: false,
     ),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Action for the floating action button
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const SelectContact(),
+            ),
+          );
         },
-        child: Icon(Icons.chat),
+        child: const Icon(Icons.chat),
       ),
       body: ListView.builder(
         itemCount: chatList.length,
         itemBuilder: (context, index) => Customcard(
           chatModel: chatList[index],
-          ),
+        ),
       ),
     );
   }
