@@ -2,16 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:whatapps/Custom/ButtonCard.dart';
 import 'package:whatapps/Model/ChatModel.dart';
 import 'package:whatapps/Custom/ContactCard.dart';
-import 'package:whatapps/screens/CreateProfile.dart';
 
-class SelectContact extends StatefulWidget {
-  const SelectContact({Key? key}) : super(key: key);
+class SelectContact extends StatelessWidget {
+  const SelectContact({super.key});
 
-  @override
-  _SelectContactState createState() => _SelectContactState();
-}
-
-class _SelectContactState extends State<SelectContact> {
   @override
   Widget build(BuildContext context) {
     List<ChatModel> contacts = [
@@ -59,9 +53,18 @@ class _SelectContactState extends State<SelectContact> {
                   value: "Invite a friend",
                   child: Text("Invite a friend"),
                 ),
-                PopupMenuItem(value: "Refresh", child: Text("Refresh")),
-                PopupMenuItem(value: "Contact Us", child: Text("Contact Us")),
-                PopupMenuItem(value: "Help", child: Text("Help")),
+                PopupMenuItem(
+                  value: "Refresh",
+                  child: Text("Refresh"),
+                ),
+                PopupMenuItem(
+                  value: "Contact Us",
+                  child: Text("Contact Us"),
+                ),
+                PopupMenuItem(
+                  value: "Help",
+                  child: Text("Help"),
+                ),
               ];
             },
           ),
@@ -71,21 +74,13 @@ class _SelectContactState extends State<SelectContact> {
         itemCount: contacts.length + 2,
         itemBuilder: (context, index) {
           if (index == 0) {
-            return InkWell(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const CreateProfile(),
-                  ),
-                );
-              },
-              child: const ButtonCard(icon: Icons.group, name: "Create Group"),
-            );
+            return const ButtonCard(icon: Icons.group, name: "Create Group");
           } else if (index == 1) {
-            return ButtonCard(icon: Icons.person_add, name: "Add Contact");
+            return const ButtonCard(icon: Icons.person_add, name: "Add Contact");
           } else {
-            return ContactCard(contact: contacts[index - 2]);
+            return ContactCard(
+              contact: contacts[index - 2],
+            );
           }
         },
       ),

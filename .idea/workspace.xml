@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d4bed1e-4dc6-479c-9c78-0209fa1cb4a3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/whatapps/lib/Custom/ContactCard.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/whatapps/lib/screens/SelectContact.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="7137b4d1-bfd6-4e43-b823-301330d48991" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/whatapps/lib/Custom/CustomCard.dart" beforeDir="false" afterPath="$PROJECT_DIR$/whatapps/lib/Custom/CustomCard.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/whatapps/lib/Pages/Chatpage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/whatapps/lib/Pages/Chatpage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/whatapps/lib/screens/IndividualPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/whatapps/lib/screens/IndividualPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Custom/CustomCard.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Custom/CustomCard.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Pages/Chatpage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Pages/Chatpage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/IndividualPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/IndividualPage.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,11 +35,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 3
-}</component>
-  <component name="ProjectId" id="30NA2W2yii4DDrEaZRFdDu6fq4y" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 3
+}]]></component>
+  <component name="ProjectId" id="30NBd7TOU2vKk7wEfowdshIVPEs" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" />
     <panes>
@@ -56,6 +54,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Flutter.main.dart.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -64,8 +63,8 @@
     "cidr.known.project.marker": "true",
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "main",
+    "io.flutter.reload.alreadyRun": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Work/appflutter/whatapps",
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
@@ -75,11 +74,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2d4bed1e-4dc6-479c-9c78-0209fa1cb4a3" name="Changes" comment="" />
-      <created>1753457452840</created>
+      <changelist id="7137b4d1-bfd6-4e43-b823-301330d48991" name="Changes" comment="" />
+      <created>1753458235160</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1753457452840</updated>
+      <updated>1753458235160</updated>
     </task>
     <servers />
   </component>

@@ -25,8 +25,8 @@ class Customcard extends StatelessWidget {
           radius: 30,
           child: SvgPicture.asset(
             chatModel.isGroup
-                ? 'assets/images/group.svg'
-                : 'assets/images/person.svg',
+                ? 'assets/images/group.png'
+                : 'assets/images/person.png',
             width: 50,
             height: 50,
           ),

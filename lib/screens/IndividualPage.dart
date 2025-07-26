@@ -199,47 +199,60 @@ class _IndividualPageState extends State<IndividualPage> {
       ),
     );
   }
-  Widget bottomSheet(){
-    return Container(
-      height: 200,
-      child: Column(
-        children: [
-          ListTile(
-            leading: const Icon(Icons.image, color: Colors.teal),
-            title: const Text("Photo & Video Library"),
-            onTap: () {
-              // Handle photo and video library
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.file_copy, color: Colors.teal),
-            title: const Text("Document"),
-            onTap: () {
-              // Handle document
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.location_on, color: Colors.teal),
-            title: const Text("Location"),
-            onTap: () {
-              // Handle location
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.contact_phone, color: Colors.teal),
-            title: const Text("Contact"),
-            onTap: () {
-              // Handle contact
-              Navigator.pop(context);
-            },
-          ),
-        ],
+ Widget bottomSheet() {
+  return Container(
+    height: 278,
+    width: MediaQuery.of(context).size.width,
+    decoration: const BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(20),
+        topRight: Radius.circular(20),
       ),
-    );
-  }
+    ),
+    child: Column(
+      children: [
+        const SizedBox(height: 10),
+        Wrap(
+          alignment: WrapAlignment.spaceEvenly,
+          spacing: 20,
+          runSpacing: 20,
+          children: [
+            iconCreation(Icons.insert_drive_file, Colors.indigo, "Document"),
+            iconCreation(Icons.camera_alt, Colors.pink, "Camera"),
+            iconCreation(Icons.image, Colors.purple, "Gallery"),
+            iconCreation(Icons.headset, Colors.orange, "Audio"),
+            iconCreation(Icons.location_on, Colors.green, "Location"),
+            iconCreation(Icons.person, Colors.blue, "Contact"),
+          ],
+        ),
+      ],
+    ),
+  );
+}
+
+Widget iconCreation(IconData icon, Color color, String text) {
+  return InkWell(
+    onTap: () {
+      Navigator.pop(context); // Đóng bottom sheet
+    },
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        CircleAvatar(
+          radius: 30,
+          backgroundColor: color,
+          child: Icon(icon, size: 29, color: Colors.white),
+        ),
+        const SizedBox(height: 5),
+        Text(
+          text,
+          style: const TextStyle(fontSize: 14),
+        ),
+      ],
+    ),
+  );
+}
 
   Widget emojiSelect() {
     return SizedBox(

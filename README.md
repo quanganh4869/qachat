@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # whatapps
 
 A new Flutter project.
@@ -15,7 +14,3 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
-=======
-# qachat
-person
->>>>>>> 8828350515d1188cbb552098963f12a16b799145
