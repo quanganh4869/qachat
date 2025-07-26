@@ -5,7 +5,7 @@ class ChatModel {
   String? currentMessage;
   String? status;
   bool? isGroup;
-  bool selected;
+  bool selected = false;
 
   ChatModel({
     this.name,

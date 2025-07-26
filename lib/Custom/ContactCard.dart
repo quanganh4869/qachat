@@ -10,37 +10,35 @@ class ContactCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       leading: Stack(
         alignment: Alignment.bottomRight,
         children: [
           CircleAvatar(
-            radius: 28,
+            radius: 30,
             backgroundColor: Colors.blueGrey[300],
-            child: contact.isGroup == true
-                ? ClipOval(
-                    child: SvgPicture.asset(
-                      'assets/images/groups.png',
-                      width: 36,
-                      height: 36,
-                      fit: BoxFit.cover,
-                    ),
+            child: (contact.isGroup ?? false)
+                ? SvgPicture.asset(
+                    'assets/images/groups.svg', // Đảm bảo file SVG có trong assets
+                    width: 40,
+                    height: 40,
                   )
                 : const Icon(Icons.person, size: 35, color: Colors.white),
           ),
-          contact.selected?
-          Positioned(
-            bottom: 2,
-            right: 2,
-            child: CircleAvatar(
-              backgroundColor: Colors.teal,
-              radius: 11,
-              child: const Icon(
-                Icons.check,
-                color: Colors.white,
-                size: 16,
+          if (contact.selected ?? false)
+            Positioned(
+              bottom: 0,
+              right: 0,
+              child: CircleAvatar(
+                backgroundColor: Colors.teal,
+                radius: 11,
+                child: const Icon(
+                  Icons.check,
+                  color: Colors.white,
+                  size: 16,
+                ),
               ),
             ),
-          ):Container(),
         ],
       ),
       title: Text(

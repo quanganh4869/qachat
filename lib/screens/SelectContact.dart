@@ -1,76 +1,53 @@
 import 'package:flutter/material.dart';
-import 'package:whatapps/Custom/ButtonCard.dart';
-import 'package:whatapps/Custom/ContactCard.dart';
 import 'package:whatapps/Model/ChatModel.dart';
 import 'package:whatapps/screens/CreateGroup.dart';
-class SelectContact extends StatefulWidget {
-  const SelectContact({Key? key}) : super(key: key);
+import 'package:whatapps/Custom/ButtonCard.dart';
 
-  @override
-  _SelectContactState createState() => _SelectContactState();
-}
+class SelectContact extends StatelessWidget {
+  const SelectContact({super.key});
 
-class _SelectContactState extends State<SelectContact> {
   @override
   Widget build(BuildContext context) {
     List<ChatModel> contacts = [
       ChatModel(
         name: "Alice",
-        message: "Hey there!",
-        time: "12:00 PM",
         currentMessage: "Last seen recently",
-        isGroup: false,
       ),
       ChatModel(
         name: "Bob",
-        message: "Let's catch up!",
-        time: "1:00 PM",
         currentMessage: "Last seen recently",
-        isGroup: false,
       ),
-      // Add more contacts as needed
+      ChatModel(
+        name: "Charlie",
+        currentMessage: "Online",
+      ),
     ];
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.teal,
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const [
             Text("Select Contact"),
             Text(
               "100 Contacts",
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-                color: Colors.white70,
-              ),
+              style: TextStyle(fontSize: 14, color: Colors.white),
             ),
           ],
         ),
         actions: [
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.search, size: 30),
+            icon: const Icon(Icons.search, size: 28),
           ),
           PopupMenuButton<String>(
             itemBuilder: (BuildContext context) {
               return const [
-                PopupMenuItem(
-                  value: "Invite a friend",
-                  child: Text("Invite a friend"),
-                ),
-                PopupMenuItem(
-                  value: "Refresh",
-                  child: Text("Refresh"),
-                ),
-                PopupMenuItem(
-                  value: "Contact Us",
-                  child: Text("Contact Us"),
-                ),
-                PopupMenuItem(
-                  value: "Help",
-                  child: Text("Help"),
-                ),
+                PopupMenuItem(value: "Invite a friend", child: Text("Invite a friend")),
+                PopupMenuItem(value: "Refresh", child: Text("Refresh")),
+                PopupMenuItem(value: "Contact Us", child: Text("Contact Us")),
+                PopupMenuItem(value: "Help", child: Text("Help")),
               ];
             },
           ),
@@ -80,26 +57,54 @@ class _SelectContactState extends State<SelectContact> {
         itemCount: contacts.length + 2,
         itemBuilder: (context, index) {
           if (index == 0) {
-            return  InkWell(
-              onTap: () {
-                // Navigate to Create Group screen
-                Navigator.push(context, MaterialPageRoute(builder: (context) =>  CreateGroup()));
-              },
-              child: ButtonCard(
-                icon: Icons.group,
-                 name: "Create Group"
-                 ),
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const CreateGroup()));
+                },
+                child: const ButtonCard(icon: Icons.group, name: "Create Group"),
+              ),
             );
           } else if (index == 1) {
-            return  ButtonCard(
-              icon: Icons.person_add,
-               name: "Add Contact"
-               );
+            return const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+              child: ButtonCard(icon: Icons.person_add, name: "Add Contact"),
+            );
           } else {
-            return ContactCard(
-              contact: contacts[index - 2],
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+              child: ContactCard(contact: contacts[index - 2]),
             );
           }
+        },
+      ),
+    );
+  }
+}
+
+class ContactCard extends StatelessWidget {
+  final ChatModel contact;
+  const ContactCard({super.key, required this.contact});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      elevation: 1,
+      child: ListTile(
+        leading: CircleAvatar(
+          radius: 24,
+          backgroundColor: Colors.blueAccent,
+          child: Text(
+            contact.name?.substring(0, 1).toUpperCase() ?? "?",
+            style: const TextStyle(color: Colors.white, fontSize: 18),
+          ),
+        ),
+        title: Text(contact.name ?? "Unknown", style: const TextStyle(fontSize: 16)),
+        subtitle: Text(contact.message ?? "", maxLines: 1, overflow: TextOverflow.ellipsis),
+        onTap: () {
+          // xử lý khi bấm vào contact
         },
       ),
     );
