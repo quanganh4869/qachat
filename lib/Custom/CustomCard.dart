@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:whatapps/Model/ChatModel.dart';
 import 'package:whatapps/screens/IndividualPage.dart';
+
 class Customcard extends StatelessWidget {
   const Customcard({Key? key, required this.chatModel}) : super(key: key);
-  final ChatModel chatModel;
 
+  final ChatModel chatModel;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class Customcard extends StatelessWidget {
         leading: CircleAvatar(
           radius: 30,
           child: SvgPicture.asset(
-            chatModel.isGroup
+            chatModel.isGroup == true
                 ? 'assets/images/group.png'
                 : 'assets/images/person.png',
             width: 50,
@@ -32,20 +33,20 @@ class Customcard extends StatelessWidget {
           ),
         ),
         title: Text(
-          chatModel.name,
-          style: TextStyle(
+          chatModel.name ?? '',
+          style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
         ),
         subtitle: Row(
           children: [
-            Icon(Icons.done_all, color: Colors.green, size: 16),
-            SizedBox(width: 3),
-            Text(chatModel.currentMessage ),
+            const Icon(Icons.done_all, color: Colors.green, size: 16),
+            const SizedBox(width: 3),
+            Text(chatModel.currentMessage ?? ''),
           ],
         ),
-        trailing: Text(chatModel.time),
+        trailing: Text(chatModel.time ?? ''),
       ),
     );
   }
