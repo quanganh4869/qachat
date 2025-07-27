@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:camera/camera.dart';
+import 'package:whatapps/screens/CameraScreen.dart';
 import 'package:whatapps/screens/homescreens.dart';
 
-void main() {
+late List<CameraDescription> cameras;
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  cameras = await availableCameras();
   runApp(const MyApp());
 }
 
@@ -19,8 +25,7 @@ class MyApp extends StatelessWidget {
           secondary: Colors.greenAccent,
         ),
       ),
-      home: const Homescreens(),
-      
+      home: const Homescreens(), // ✅ Không cần truyền cameras
     );
   }
 }

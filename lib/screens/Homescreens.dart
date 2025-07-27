@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatapps/Pages/CameraPage.dart';
 import 'package:whatapps/Pages/Chatpage.dart';
 
 class Homescreens extends StatefulWidget {
@@ -13,7 +14,6 @@ class _HomescreenState extends State<Homescreens> with SingleTickerProviderState
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _controller = TabController(length: 4, vsync: this, initialIndex: 0);
   }
@@ -74,7 +74,7 @@ class _HomescreenState extends State<Homescreens> with SingleTickerProviderState
       body: TabBarView(
         controller: _controller,
         children: [
-          Center(child: Text("Camera")),
+          Center(child: CameraPage()),
           Center(child: Chatpage()),
           Center(child: Text("Status")),
           Center(child: Text("Calls")),
