@@ -3,12 +3,12 @@ import 'package:camera/camera.dart';
 import 'package:whatapps/screens/CameraScreen.dart';
 
 class CameraPage extends StatelessWidget {
-  final List<CameraDescription>? cameras;
+  final List<CameraDescription> cameras;
 
-  const CameraPage({super.key, this.cameras});
+  const CameraPage({Key? key, required this.cameras}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return CameraScreen(cameras: cameras); 
+    return CameraScreen(cameras: cameras);
   }
 }

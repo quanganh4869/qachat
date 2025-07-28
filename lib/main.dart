@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
-import 'package:whatapps/screens/CameraScreen.dart';
-import 'package:whatapps/screens/homescreens.dart';
+import 'package:whatapps/screens/Homescreens.dart';
 
 late List<CameraDescription> cameras;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  cameras = await availableCameras();
+  cameras = await availableCameras(); // Lấy danh sách camera
   runApp(const MyApp());
 }
 
@@ -17,15 +16,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'WhatsApp Clone',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        fontFamily: 'OpenSans',
         primaryColor: Colors.green,
         colorScheme: ColorScheme.fromSwatch().copyWith(
           secondary: Colors.greenAccent,
         ),
       ),
-      home: const Homescreens(), // ✅ Không cần truyền cameras
+      home: Homescreens(cameras: cameras), // ✅ truyền cameras xuống
     );
   }
 }
