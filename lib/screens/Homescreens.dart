@@ -12,13 +12,26 @@ class Homescreens extends StatefulWidget {
   _HomescreenState createState() => _HomescreenState();
 }
 
-class _HomescreenState extends State<Homescreens> with SingleTickerProviderStateMixin {
-  late TabController _controller;
+class _HomescreenState extends State<Homescreens> {
+  int _selectedIndex = 0;
+
+  late List<Widget> _pages;
 
   @override
   void initState() {
     super.initState();
-    _controller = TabController(length: 4, vsync: this, initialIndex: 0);
+    _pages = [
+      Chatpage(cameras: widget.cameras),
+      const Center(child: Text("Status")),
+      const Center(child: Text("Community")),
+      const Center(child: Text("Calls")),
+    ];
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 
   @override
@@ -27,40 +40,46 @@ class _HomescreenState extends State<Homescreens> with SingleTickerProviderState
       appBar: AppBar(
         title: const Text("Whatsapp Clone"),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.camera_alt),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CameraPage(cameras: widget.cameras),
+                ),
+              );
+            },
+          ),
           IconButton(icon: const Icon(Icons.search), onPressed: () {}),
           PopupMenuButton<String>(
             onSelected: (value) {
               print(value);
             },
             itemBuilder: (BuildContext context) {
-              return [
-                 PopupMenuItem(value: "New Group", child: Text("New Group")),
-                 PopupMenuItem(value: "New Broadcast", child: Text("New Broadcast")),
-                 PopupMenuItem(value: "Whatsapp Web", child: Text("Whatsapp Web")),
-                 PopupMenuItem(value: "Starred Messages", child: Text("Starred Messages")),
-                 PopupMenuItem(value: "Settings", child: Text("Settings")),
+              return const [
+                PopupMenuItem(value: "New Group", child: Text("New Group")),
+                PopupMenuItem(value: "New Broadcast", child: Text("New Broadcast")),
+                PopupMenuItem(value: "Whatsapp Web", child: Text("Whatsapp Web")),
+                PopupMenuItem(value: "Starred Messages", child: Text("Starred Messages")),
+                PopupMenuItem(value: "Settings", child: Text("Settings")),
               ];
             },
           ),
         ],
-        bottom: TabBar(
-          controller: _controller,
-          indicatorColor: Colors.white,
-          tabs:  [
-            Tab(icon: Icon(Icons.camera_alt)),
-            Tab(text: "Chats"),
-            Tab(text: "Status"),
-            Tab(text: "Calls"),
-          ],
-        ),
       ),
-      body: TabBarView(
-        controller: _controller,
-        children: [
-            CameraPage(cameras: widget.cameras), // ✅ cameras truyền đúng
-           Chatpage(),
-           Center(child: Text("Status")),
-           Center(child: Text("Calls")),
+      body: _pages[_selectedIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: Colors.teal,
+        unselectedItemColor: Colors.grey,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.chat), label: "Chats"),
+          BottomNavigationBarItem(icon: Icon(Icons.circle), label: "Status"),
+          BottomNavigationBarItem(icon: Icon(Icons.people), label: "Community"),
+          BottomNavigationBarItem(icon: Icon(Icons.call), label: "Calls"),
         ],
       ),
     );
